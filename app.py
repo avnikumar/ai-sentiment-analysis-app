@@ -1,3 +1,7 @@
+# Copyright (c) 2025 Avnish Kumar
+# Licensed under the MIT License.
+# See LICENSE file in the project root for details.
+
 import streamlit as st
 from transformers import pipeline
 
