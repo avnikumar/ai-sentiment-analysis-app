@@ -15,11 +15,16 @@ def load_model():
 analyzer = load_model()
 
 # User input
-user_text = st.text_area("Enter text here:", "How is your day? This was bad.")
+user_text = st.text_area(
+    "Enter text here:",
+    placeholder="Write your sentence here..."
+)
 
 # When user clicks the button
 if st.button("Analyze Sentiment"):
-    if user_text.strip():
+    if not user_text.strip():
+        st.warning("⚠️ Please enter some text to analyze.")
+    else:
         result = analyzer(user_text)
         label = result[0]['label']
         score = result[0]['score']
@@ -28,5 +33,3 @@ if st.button("Analyze Sentiment"):
         st.subheader("Result:")
         st.write(f"**Sentiment:** {label}")
         st.write(f"**Confidence:** {score:.2%}")
-    else:
-        st.warning("Please enter some text to analyze.")
